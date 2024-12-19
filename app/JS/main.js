@@ -14,11 +14,22 @@ async function fetchData(apiURL) {
 }
 
 const insertHTML = async () => {
-  const insert = await fetchData(apiURL);
+  const movies = await fetchData(apiURL);
   const apiResponseDOM = document.getElementById("api-response");
-  const title = insert.title;
-  const
-  apiResponseDOM.insertHTML = `title: `
 
-  insert.
+  movies.forEach((item) => {
+    const title = item.title;
+    const image = item.image;
+    apiResponseDOM.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="movie">
+        <h3>Title: ${title}</h3>
+        <img src="${image}" alt="Movie poster of ${title}" />
+      </div>
+      `
+    );
+  });
 };
+
+insertHTML();
