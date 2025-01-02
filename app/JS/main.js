@@ -1,10 +1,12 @@
 import "../CSS/style.css";
 
-const apiURL = "https://ghibliapi.vercel.app/films";
+const filmURL = "https://ghibliapi.vercel.app/films";
+const characterAPI = "https://ghibliapi.vercel.app/people";
+const locationAPI = "";
 
-async function fetchData(apiURL) {
+async function fetchData(filmURL) {
   try {
-    const response = await fetch(apiURL);
+    const response = await fetch(filmURL);
     const data = await response.json();
     console.log(data);
     return data;
@@ -15,24 +17,38 @@ async function fetchData(apiURL) {
 }
 
 const insertHTML = async () => {
-  const movies = await fetchData(apiURL);
-  const apiResponseDOM = document.querySelector(".api-response"); // Corrected to query by class name
-
-  // If no movies, show a message
-  if (movies.length === 0) {
-    apiResponseDOM.innerHTML = "<p>No movies found or error fetching data.</p>";
-    return;
-  }
+  const movies = await fetchData(filmURL);
+  const apiResponseDOM = document.querySelector(".api-response");
 
   movies.forEach((item) => {
     const title = item.title;
-    const image = item.image; // Placeholder image if no image URL
+    const image = item.image;
+    const japaneseTitle = item.original_title;
+    const date = item.release_date;
+    const score = item.rt_score;
+    const director = item.director;
+    const desc = item.description;
+    const people = item.people;
+    const locations = item.locations;
+    const film_id = item.id;
+
     apiResponseDOM.insertAdjacentHTML(
       "beforeend",
       `
-      <div class="movie">
-        <h3>Title: ${title}</h3>
-        <img src="${image}" class = "movie-image" alt="Movie poster of ${title}" />
+      <div class="movie-card">
+        <div class="card-front">
+            <h2> ${title}</h2>
+            <h3> ${japaneseTitle}</h3>
+            <img src="${image}" class = "movie-image" alt="Movie poster of ${title}" />
+
+        </div>
+        <div class = "card-back">
+            <h3>Plot: ${desc}</h3>
+            <h3>Rotten Tomatoes Score: ${score}</h3>
+            <h3>Release Date: ${date}</h3>
+            <h3>Director: ${director}</h3>
+        </div>
+
       </div>
       `
     );
