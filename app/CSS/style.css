@@ -9,15 +9,25 @@ body,
 }
 
 .api-response {
-  justify-content: center;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .movie-image {
-  width: 500px;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
 }
 
 .movie-card {
   padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  box-sizing: border-box;
+  margin: 20px;
+  background-color: aliceblue;
 }
