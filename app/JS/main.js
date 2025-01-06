@@ -23,6 +23,7 @@ const insertHTML = async () => {
   movies.forEach((item) => {
     const title = item.title;
     const image = item.image;
+    const poster = item.movie_poster;
     const japaneseTitle = item.original_title;
     const date = item.release_date;
     const score = item.rt_score;
@@ -31,6 +32,8 @@ const insertHTML = async () => {
     const people = item.people;
     const locations = item.locations;
     const film_id = item.id;
+
+    movies.push({ title, image, movie_poster, score });
 
     apiResponseDOM.insertAdjacentHTML(
       "beforeend",
@@ -56,3 +59,13 @@ const insertHTML = async () => {
 };
 
 insertHTML();
+
+const DOMSelectors = {
+  filterDropdown: document.querySelectorAll(".filter-dropdown"),
+  resetButton: document.querySelector("#reset-button"),
+};
+
+function gameStart() {
+  const gameImageOne = document.querySelector("#game-image-1");
+  const submitButton = document.querySelector("#submit-button");
+}
