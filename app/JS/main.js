@@ -68,4 +68,61 @@ const DOMSelectors = {
 function gameStart() {
   const gameImageOne = document.querySelector("#game-image-1");
   const submitButton = document.querySelector("#submit-button");
+
+  function newQuestion() {
+    gameImageOne.innerHTML = "";
+    gameImageTwo.innerHTML = ""; // maybe 4 windows intead 
+
+    function getMovies() {
+      const index1 = Math.floor(Math.random() * arr.length);
+      let index2 = Math.floor(Math.random() * arr.length);
+
+      while (index2 === index1) {
+        index2 = Math.floor(Math.random() * arr.length);
+      }
+      return [arr[index1], arr[index2]];
+    }
+
+    getMovies(movies);
+
+    gameImageOne.insertAdjacentHTML(
+      "beforeend",
+      `<img src="${getMovies[0].image}" alt="random movie 1" />` //might come back and make these clickable buttons instead
+    );
+
+    gameImageTwo.insertAdjacentHTML(
+      "beforeend",
+      `<img src="${getMovies[1].image}" alt="random movie 2" />`
+    );
+
+    function higherRated() {
+        if getMovies[0].score > getMovies[1].score
+    }
+  }
 }
+gameStart();
+
+
+const filterMap = {
+    director: "director",
+    decade: "decade",
+  };
+  
+  function filterMovies(filterType, filterValue) {
+    const filteredMovies = albums.filter((album) => {
+      return movies[filterType].includes(filterValue); //if the prop has the text from the dropdown
+    });
+    showAlbums(filteredAlbums); //only show what matches clicked
+  }
+  DOMSelectors.filterDropdown.forEach((dropdown) => {
+    const button = dropdown.querySelector("button");
+    dropdown.querySelectorAll("a").forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const filterCategory = button.id; //get id from dropdown
+        const filterKey = filterMap[filterCategory]; //match it to prop in array
+        const filterValue = event.target.textContent; //content in each dropdown
+  
+        filterMovies(filterKey, filterValue);
+      });
+    });
+  });
