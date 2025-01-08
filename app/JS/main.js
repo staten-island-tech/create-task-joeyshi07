@@ -35,6 +35,7 @@ const insertHTML = async () => {
 
     movies.push({ title, image, movie_poster, score });
 
+    function movieAdd(movie) {
     apiResponseDOM.insertAdjacentHTML(
       "beforeend",
       `
@@ -55,8 +56,8 @@ const insertHTML = async () => {
       </div>
       `
     );
-  });
-};
+    }
+});
 
 insertHTML();
 
@@ -102,6 +103,11 @@ function gameStart() {
 }
 gameStart();
 
+function showMovies(moviesDisplayed) {
+    DOMSelectors.container.replaceChildren();
+    moviesDisplayed.forEach((movie) => movieAdd(movie));
+}
+showMovies(movies);
 
 const filterMap = {
     director: "director",
@@ -109,10 +115,10 @@ const filterMap = {
   };
   
   function filterMovies(filterType, filterValue) {
-    const filteredMovies = albums.filter((album) => {
+    const filteredMovies = movies.filter((movie) => {
       return movies[filterType].includes(filterValue); //if the prop has the text from the dropdown
     });
-    showAlbums(filteredAlbums); //only show what matches clicked
+    showAlbums(filteredMoviess); //only show what matches clicked
   }
   DOMSelectors.filterDropdown.forEach((dropdown) => {
     const button = dropdown.querySelector("button");
