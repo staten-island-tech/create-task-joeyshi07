@@ -35,17 +35,26 @@ const startGame = async () => {
     }
 
     const randomMovies = [];
+    const usedScores = new Set();
+
     while (randomMovies.length < 4) {
       const randomIndex = Math.floor(Math.random() * movies.length);
-      if (!randomMovies.includes(movies[randomIndex])) {
-        randomMovies.push(movies[randomIndex]);
+      const movie = movies[randomIndex];
+
+      if (!usedScores.has(movie.rt_score)) {
+        randomMovies.push(movie);
+        usedScores.add(movie.rt_score);
       }
     }
-
     let highestRatedMovie = randomMovies[0];
     correctMovieIndex = 0;
+
     for (let i = 1; i < randomMovies.length; i++) {
-      if (randomMovies[i].rt_score > highestRatedMovie.rt_score) {
+      if (randomMovies[i].title === "The Tale of the Princess Kaguya") {
+        highestRatedMovie = randomMovies[i];
+        correctMovieIndex = i;
+        break;
+      } else if (randomMovies[i].rt_score > highestRatedMovie.rt_score) {
         highestRatedMovie = randomMovies[i];
         correctMovieIndex = i;
       }
@@ -57,6 +66,7 @@ const startGame = async () => {
         "beforeend",
         `<div class="movie-option" data-index="${index}">
           <img src="${movie.image}" alt="${movie.title}" />
+          </p>the highest rated movie was ${randomMovies[correctMovieIndex].title}</p>
         </div>`
       );
     });
@@ -93,7 +103,7 @@ const showMovies = async () => {
       "beforeend",
       `<div class="movie-card">
         <h3>${movie.title}</h3>
-        <img src="${movie.image}" alt="${movie.title}" />
+        <img src="${movie.movie_banner}" alt="${movie.title}" />
         <p>Director: ${movie.director}</p>
         <p>Release Date: ${movie.release_date}</p>
       </div>`
