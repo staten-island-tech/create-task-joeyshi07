@@ -2,43 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Ghibli Movie Gallery</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <h1>GHIBLI MOVIE GALLERY</h1>
+    <header>
+      <h1>Ghibli Movie Gallery</h1>
+    </header>
 
-    <div class="dropdowns">
-      <div class="filter-dropdown">
-        <button class="btn" id="Director">DIRECTOR</button>
-        <div class="dropdown-content">
-          <a href="#">Hayao Miyazaki</a>
-          <a href="#">Isao Takahata</a>
-          <a href="#">Yoshifumi Kondō</a>
-          <a href="#">Hiroyuki Morita</a>
-          <a href="#">Gorō Miyazaki</a>
-          <a href="#">Hiromasa Yonebayashi</a>
-          <a href="#">Michaël Dudok de Wit</a>
+    <div>
+      <h2>Guess the Highest Rated Movie</h2>
+      <div id="game-container" class="game-container"></div>
+      <div id="score-container"></div>
+    </div>
+
+    <div class="filters">
+      <h2>Filter Movies</h2>
+      <div class="dropdowns">
+        <div class="filter-dropdown">
+          <button class="btn" id="director">DIRECTOR</button>
+          <div class="dropdown-content">
+            <a href="#">Hayao Miyazaki</a>
+            <a href="#">Isao Takahata</a>
+            <a href="#">Yoshifumi Kondō</a>
+            <a href="#">Hiroyuki Morita</a>
+            <a href="#">Gorō Miyazaki</a>
+            <a href="#">Hiromasa Yonebayashi</a>
+            <a href="#">Michaël Dudok de Wit</a>
+          </div>
         </div>
-        <button class="btn" id="Decader">DECADE</button>
-        <div class="dropdown-content">
-          <a href="#">1980s</a>
-          <a href="#">1990s</a>
-          <a href="#">2000s</a>
-          <a href="#">2010s<a>
-          <a href="#">2020s</a>
+        <div class="filter-dropdown">
+          <button class="btn" id="decade">DECADE</button>
+          <div class="dropdown-content">
+            <a href="#">1980s</a>
+            <a href="#">1990s</a>
+            <a href="#">2000s</a>
+            <a href="#">2010s</a>
+            <a href="#">2020s</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="game-container">
 
+    <div class="gallery">
+      <h2>Movie Gallery</h2>
+      <div class="api-response"></div>
     </div>
 
-    <div class="api-response">
-
-    </div>
     <script type="module" src="/JS/main.js"></script>
   </body>
 </html>
