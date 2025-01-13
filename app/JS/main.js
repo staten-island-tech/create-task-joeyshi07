@@ -10,6 +10,27 @@ const fetchData = async (apiURL) => {
   }
 };
 
+const movies = await fetchData(filmURL);
+
+const startGame = async () => {
+  const gameContainer = document.querySelector("#game-container");
+  const scoreContainer = document.querySelector("#score-container");
+  displayQuiz(movies, gameContainer, scoreContainer);
+};
+
+const displayOptions = (movies, gameContainer) => {
+  gameContainer.innerHTML = "";
+
+  movies.forEach((movie, index) => {
+    gameContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div class="movie-option" data-index="${index}">
+        <img src="${movie.image}" alt="${movie.title}" />
+      </div>`
+    );
+  });
+};
+
 let correctAnswers = 0;
 let currentRound = 0;
 const gameRounds = 5;
@@ -45,19 +66,6 @@ const getHighestRatedIndex = (movies) => {
   }
 
   return highestRatedIndex;
-};
-
-const displayOptions = (movies, gameContainer) => {
-  gameContainer.innerHTML = "";
-
-  movies.forEach((movie, index) => {
-    gameContainer.insertAdjacentHTML(
-      "beforeend",
-      `<div class="movie-option" data-index="${index}">
-        <img src="${movie.image}" alt="${movie.title}" />
-      </div>`
-    );
-  });
 };
 
 const gameOver = (scoreContainer, gameContainer) => {
@@ -109,17 +117,9 @@ const resetGame = async () => {
   startGame();
 };
 
-const startGame = async () => {
-  const movies = await fetchData(filmURL);
-  const gameContainer = document.querySelector("#game-container");
-  const scoreContainer = document.querySelector("#score-container");
-  displayQuiz(movies, gameContainer, scoreContainer);
-};
-
 startGame();
 
 const showMovies = async () => {
-  const movies = await fetchData(filmURL);
   const apiResponseDOM = document.querySelector(".api-response");
   apiResponseDOM.innerHTML = "";
   movies.forEach((movie) => {
