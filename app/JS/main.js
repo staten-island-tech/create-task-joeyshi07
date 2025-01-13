@@ -60,7 +60,7 @@ const displayOptions = (movies, gameContainer) => {
   });
 };
 
-const handleGameOver = (scoreContainer, gameContainer) => {
+const gameOver = (scoreContainer, gameContainer) => {
   if (correctAnswers === gameRounds) {
     scoreContainer.insertAdjacentHTML(
       "beforeend",
@@ -82,7 +82,7 @@ const handleGameOver = (scoreContainer, gameContainer) => {
 
 const displayQuiz = (movies, gameContainer, scoreContainer) => {
   if (currentRound === gameRounds) {
-    handleGameOver(scoreContainer, gameContainer);
+    gameOver(scoreContainer, gameContainer);
     return;
   }
 
