@@ -71,7 +71,7 @@ p {
   background-color: rgb(26, 117, 181); 
   color: white; 
   padding: 15px 32px;
-  font-size: 1.5rem; 
+  font-size: 2.2rem; 
   border-color: rgb(211, 229, 245);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -80,6 +80,12 @@ p {
   justify-content: center;
   transition: background-color 0.3s, transform 0.2s; 
   margin-top: 20px; 
+  font-family: "Gaegu";
+  margin-bottom: 10px;
+}
+
+.scoreContainer {
+  font-family: 'Karla';
 }
 
 #replay:hover {

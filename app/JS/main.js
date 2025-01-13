@@ -24,9 +24,15 @@ const startGame = async () => {
   const displayQuiz = () => {
     if (currentRound === gameRounds) {
       if (correctAnswers === gameRounds) {
-        scoreContainer.innerHTML = "CONGRATS! You got all questions right!";
+        scoreContainer.insertAdjacentHTML(
+          "beforeend",
+          `<p> "CONGRATS! You got all the questions right!"</p>`
+        );
       } else {
-        scoreContainer.innerHTML = `Game Over! You got ${correctAnswers} out of ${gameRounds}.`;
+        scoreContainer.insertAdjacentHTML(
+          "beforeend",
+          `<p>Game Over! You got ${correctAnswers} out of ${gameRounds} Correct. </p>`
+        );
       }
       gameContainer.innerHTML = `<button id="replay">Replay</button>`;
 
