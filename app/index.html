@@ -7,19 +7,21 @@
     <link rel="stylesheet" href="/CSS/style.css" />
   </head>
   <body>
-    <h1>Ghibli Movie Gallery</h1>
+    <div class="container">
+      <h1>❀ GHIBLI MOVIE WALKTHROUGH ❀</h1>
 
-    <div>
-      <h2>Guess the Highest Rated Movie</h2>
-      <div id="game-container" class="game-container"></div>
-      <div id="score-container"></div>
+      <div>
+        <h2>Movie Rating Quiz</h2>
+        <div id="game-container" class="game-container"></div>
+        <div id="score-container"></div>
+      </div>
+
+      <div class="gallery">
+        <h2>Movie Gallery</h2>
+        <div class="api-response"></div>
+      </div>
+
+      <script type="module" src="/JS/main.js"></script>
     </div>
-
-    <div class="gallery">
-      <h2>Movie Gallery</h2>
-      <div class="api-response"></div>
-    </div>
-
-    <script type="module" src="/JS/main.js"></script>
   </body>
 </html>
