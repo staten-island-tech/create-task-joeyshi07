@@ -31,21 +31,20 @@ const getRandomMovies = (movies, count) => {
   return randomMovies;
 };
 
-const getHighestRatedMovieIndex = (movies) => {
-  let highestRatedMovieIndex = 0;
+const getHighestRatedIndex = (movies) => {
+  let highestRatedIndex = 0;
 
   for (let i = 1; i < movies.length; i++) {
     if (Number(movies[i].rt_score) === 100) {
       return i;
     } else if (
-      Number(movies[i].rt_score) >
-      Number(movies[highestRatedMovieIndex].rt_score)
+      Number(movies[i].rt_score) > Number(movies[highestRatedIndex].rt_score)
     ) {
-      highestRatedMovieIndex = i;
+      highestRatedIndex = i;
     }
   }
 
-  return highestRatedMovieIndex;
+  return highestRatedIndex;
 };
 
 const displayOptions = (movies, gameContainer) => {
@@ -88,7 +87,7 @@ const displayQuiz = (movies, gameContainer, scoreContainer) => {
   }
 
   const randomMovies = getRandomMovies(movies, 4);
-  const correctMovieIndex = getHighestRatedMovieIndex(randomMovies);
+  const correctMovieIndex = getHighestRatedIndex(randomMovies);
 
   displayOptions(randomMovies, gameContainer);
 
