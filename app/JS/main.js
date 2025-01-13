@@ -26,7 +26,7 @@ const startGame = async () => {
       if (correctAnswers === gameRounds) {
         scoreContainer.insertAdjacentHTML(
           "beforeend",
-          `<p> CONGRATS! You got all the questions right!</p>`
+          `<p> "CONGRATS! You got all the questions right!"</p>`
         );
       } else {
         scoreContainer.insertAdjacentHTML(
