@@ -13,9 +13,13 @@ body,
 .container {
   background-color: rgb(246, 245, 241);
 }
+header{
+  background-color: rgb(211, 229, 245)
+}
+
 h1 {
   font-size: 7rem;
-  margin: 0;
+  padding: 50px;
   font-family: "Gaegu";
   text-decoration: underline;
   text-underline-position: under;
@@ -24,7 +28,6 @@ h1 {
 h2 {
   font-size: 3.8rem;
   font-family: "Playwrite IN";
-  margin: 20px 0;
   color: rgb(4, 78, 130);
   background-color: rgb(240, 230, 191)
 }
@@ -51,6 +54,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 .movie-option img {
