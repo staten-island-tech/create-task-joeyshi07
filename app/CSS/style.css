@@ -29,7 +29,7 @@ h2 {
   font-size: 3.8rem;
   font-family: "Playwrite IN";
   color: rgb(4, 78, 130);
-  background-color: rgb(240, 230, 191)
+  background-color: rgb(240, 230, 191);
 }
 
 h3 {
@@ -43,10 +43,15 @@ h4 {
   color: rgb(4, 78, 130);
 }
 
-p {
+h5 {
   font-size: 1.5rem;
   font-family: "Karla";
   margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.5rem;
+  font-family: "Karla";
 }
 
 .game-container {

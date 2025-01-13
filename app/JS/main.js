@@ -26,12 +26,12 @@ const startGame = async () => {
       if (correctAnswers === gameRounds) {
         scoreContainer.insertAdjacentHTML(
           "beforeend",
-          `<p> "CONGRATS! You got all the questions right!"</p>`
+          `<p>CONGRATS! You got all the questions right!</p>`
         );
       } else {
         scoreContainer.insertAdjacentHTML(
           "beforeend",
-          `<p>Game Over! You got ${correctAnswers} out of ${gameRounds} Correct. </p>`
+          `<h5>Game Over! You got ${correctAnswers} out of ${gameRounds} Correct. </h5>`
         );
       }
       gameContainer.innerHTML = `<button id="replay">Replay</button>`;
