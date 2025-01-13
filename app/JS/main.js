@@ -23,7 +23,11 @@ const startGame = async () => {
 
   const displayQuiz = () => {
     if (currentRound === gameRounds) {
-      scoreContainer.innerHTML = `Game Over! You got ${correctAnswers} out of ${gameRounds}.`;
+      if (correctAnswers === gameRounds) {
+        scoreContainer.innerHTML = "CONGRATS! You got all questions right!";
+      } else {
+        scoreContainer.innerHTML = `Game Over! You got ${correctAnswers} out of ${gameRounds}.`;
+      }
       gameContainer.innerHTML = `<button id="replay">Replay</button>`;
 
       document.querySelector("#replay").addEventListener("click", () => {
@@ -50,11 +54,13 @@ const startGame = async () => {
     correctMovieIndex = 0;
 
     for (let i = 1; i < randomMovies.length; i++) {
-      if (randomMovies[i].title === "The Tale of the Princess Kaguya") {
+      if (Number(randomMovies[i].rt_score) === "100") {
         highestRatedMovie = randomMovies[i];
         correctMovieIndex = i;
         break;
-      } else if (randomMovies[i].rt_score > highestRatedMovie.rt_score) {
+      } else if (
+        Number(randomMovies[i].rt_score) > Number(highestRatedMovie.rt_score)
+      ) {
         highestRatedMovie = randomMovies[i];
         correctMovieIndex = i;
       }
@@ -66,7 +72,6 @@ const startGame = async () => {
         "beforeend",
         `<div class="movie-option" data-index="${index}">
           <img src="${movie.image}" alt="${movie.title}" />
-          </p>the highest rated movie was ${randomMovies[correctMovieIndex].title}</p>
         </div>`
       );
     });
@@ -102,10 +107,17 @@ const showMovies = async () => {
     apiResponseDOM.insertAdjacentHTML(
       "beforeend",
       `<div class="movie-card">
-        <h3>${movie.title}</h3>
+      <div class="card-front">
+      <h3>${movie.title}</h3>
+        <h4>${movie.original_title}</h4>
         <img src="${movie.movie_banner}" alt="${movie.title}" />
         <p>Director: ${movie.director}</p>
-        <p>Release Date: ${movie.release_date}</p>
+        <p>Release Date: ${movie.release_date}</p></div>
+      
+
+         <div class = "card-back">
+            <p>Plot: ${movie.description}</p>
+        </div>
       </div>`
     );
   });

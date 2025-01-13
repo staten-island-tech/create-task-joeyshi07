@@ -20,63 +20,23 @@ h2 {
 
 .game-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 2fr);
   justify-content: center;
-  margin: 10px auto;
-  max-width: 600px;
+  margin: auto;
+  max-width: 400px;
 }
 
 .movie-option img {
   width: 250px;
   height: auto;
-  border: 3px solid #ddd;
+  border: 3px solid #dae5ee;
   border-radius: 10px;
-  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .movie-option img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.filters {
-  margin: 20px 0;
-}
-
-.dropdowns {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.filter-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  background-color: #f1f1f1;
-  min-width: 60px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.filter-dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
 }
 
 .api-response {
@@ -88,20 +48,46 @@ h2 {
 }
 
 .movie-card {
-  width: 300px;
-  padding: 20px;
+  position: relative;
+  width: 400px;
+  padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   text-align: center;
   background-color: rgb(226, 236, 245);
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
-.movie-card img {
+.card-front img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.card-back {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 78, 130, 0.9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
   border-radius: 10px;
+  transition: top 0.3s ease; 
+}
+
+.movie-card:hover .card-back {
+  top: 0; 
 }
 
 .movie-card:hover {
-  transform: scale(1.03);
-  transition: transform 0.2s;
+  transform: scale(1.05); 
 }
